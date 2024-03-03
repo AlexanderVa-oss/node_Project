@@ -61,3 +61,12 @@ By leveraging a carefully selected stack of technologies and libraries, this pro
 | /cards/:id     |  put  |     Created user     | Edit Card       | card           |
 | /cards/:id     | patch |    Registered user    | Like card       | card           |
 | /cards/:id     | delete | Created user or admin | Delete card     | Delete card    |
+
+
+## For correct work
+
+1. Write in console " npm i ".
+2. Change name " env.txt " to " .env ".
+3. Create you private key in .env -> TOKEN_PRIVATE_KEY.
+4. At MONGODB_CONNECTION_STR in .env insert you Atlas URL.
+5. If you want conect to localhost, uncoment  `# MONGODB_CONNECTION_STR="mongodb://localhost:27017/"`
