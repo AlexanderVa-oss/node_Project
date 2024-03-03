@@ -1,0 +1,12 @@
+<!-- add logic thats add initial users only if  database is empty or lower then 3 users.  -->
+<!-- needs make token adapter -->
+<!-- remove consoleLogs -->
+<!-- needs Check conection to my project 13/02/2024 02:20:00 -->
+
+
+<!-- needs add field to send in user.controler -->
+ <!-- // Возможно, нужно отправить только email и другие поля, которые безопасно отправлять
+         res.json({
+            email: newUser.email,
+            другие поля, которые безопасно отправлять
+        }); -->
