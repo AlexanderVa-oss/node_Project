@@ -3,6 +3,7 @@ import {
     registerControler,
     loginControler,
     handleGetAllUsers,
+    getUserControler,
     updateUserControler,
     deleteUserControler,
     pathIsBizControler
@@ -15,41 +16,52 @@ import {
     updateUserBizzValidation
 } from "../../../validation/validationAdapter.js";
 import authMidelleware from "../../../middlewares/auth.mw.js";
-import { adminOrowner } from "../../../middlewares/userLevel.mw.js";
+import { adminOrowner, adminOnly } from "../../../middlewares/userLevel.mw.js";
 import objectIdParamsValidationMiddleware from "../../../middlewares/objectIdParamsValidation.mw.js";
+import { get } from "mongoose";
 
 const router = express.Router();
 
-// http://localhost:3030/api/users
-router.get("/", handleGetAllUsers);
+// http://localhost:3030/api/users V get all user
+router.get("/",
+    authMidelleware,
+    adminOnly,
+    handleGetAllUsers);
 
-// http://localhost:3030/api/users/register
-router.post("/register",
+// http://localhost:3030/api/users/register V register new user
+router.post("/",
     bodyValidationMiddleware(registerValidation),
     registerControler);
 
-// http://localhost:3030/api/users/login
+// http://localhost:3030/api/users/login V login user
 router.post("/login",
     bodyValidationMiddleware(loginValidation),
     loginControler);
 
-// http://localhost:3030/api/users/update
-router.put("/update/:id",
+// http://localhost:3030/api/users v get user
+router.get("/:id",
+    authMidelleware,
+    adminOrowner,
+    getUserControler,
+)
+
+// http://localhost:3030/api/users v edit user
+router.put("/:id",
     authMidelleware,
     adminOrowner,
     bodyValidationMiddleware(updateUserValidation),
     updateUserControler
 );
 
-// http://localhost:3030/api/users/delete
-router.delete("/delete/:id",
+// http://localhost:3030/api/users v delete user
+router.delete("/:id",
     authMidelleware,
     adminOrowner,
     deleteUserControler
 );
 
-// http://localhost:3030/api/users/path
-router.patch("/patch/:id",
+// http://localhost:3030/api/users v update bizz status
+router.patch("/:id",
     authMidelleware,
     objectIdParamsValidationMiddleware,
     adminOrowner,

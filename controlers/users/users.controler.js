@@ -16,6 +16,7 @@ import {
     updateUser,
     deleteUser,
     pathIsBiz,
+    getUserById
 } from "../../model/dbAdapter.js";
 import { generateHash, cmpHash } from "../../utils/bcrypt.js";
 import { generateToken } from "../../token/jwt.js";
@@ -60,7 +61,18 @@ const loginControler = async (req, res) => {
         loginControler_err(err);
         handleError(res, 400, err.message);
     }
-}
+};
+
+const getUserControler = async (req, res) => {
+    try {
+        let userFromDB = await getUserById(req.params.id);
+        if (!userFromDB) throw new Error("no user found");
+        res.json(userFromDB);
+    } catch (err) {
+        loginControler_err(err);
+        handleError(res, 400, err.message);
+    }
+};
 
 const updateUserControler = async (req, res) => {
     try {
@@ -80,7 +92,7 @@ const deleteUserControler = async (req, res) => {
         userFromDB.password = undefined;
         userFromDB.email = undefined;
         res.json(userFromDB);
-    }catch (err) {
+    } catch (err) {
         deleteControler_err(err);
         handleError(res, 400, err.message);
     }
@@ -105,4 +117,5 @@ export {
     updateUserControler,
     deleteUserControler,
     pathIsBizControler,
+    getUserControler,
 };

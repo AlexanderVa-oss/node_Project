@@ -10,7 +10,7 @@ const getAllUsersService = async () => {
 };
 
 const getUserByIdService = async (id) => {
-    return await User.findById(id, { password: 0 }); // { password: 0 } - to hide password
+    return await User.findById(id, { password: 0, email: 0, isAdmin:0 }); 
 };
 
 const getUserByEmailService = async (email) => {

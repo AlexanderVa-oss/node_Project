@@ -7,6 +7,7 @@ import {
     updateUserService,
     deleteUserService,
     pathIsBizService,
+    getUserByIdService,
 } from "./mongodb/users/userService.js";
 import {
     createCardService,
@@ -34,17 +35,19 @@ const connectToDb = () => {
 
 // createUser in userService
 let
-    createUser,
-    createCard,
-    getCardByBizNumber,
-    getAllCards,
     getAllUsers,
+    createUser,
     getUserByEmail,
     updateUser,
     deleteUser,
     pathIsBiz,
+    getUserById,
+    
+    getAllCards,
+    createCard,
     getCardById,
     getAllMyCards,
+    getCardByBizNumber,
     updateCard,
     likeCard,
     deleteCard
@@ -72,10 +75,10 @@ if (DB === "mongo") {
         return getAllMyCardsService(user_id);
     }
 
-    updateCard = (user_id, card, ) => {
+    updateCard = (user_id, card,) => {
         return updateCardService(user_id, card);
     }
-    
+
     likeCard = (user_id, likes) => {
         return likeCardService(user_id, likes);
     }
@@ -110,6 +113,10 @@ if (DB === "mongo") {
     pathIsBiz = (id, isBusiness) => {
         return pathIsBizService(id, isBusiness);
     }
+
+    getUserById = async (id) => {
+        return await getUserByIdService(id);
+    }
 };
 
 export default connectToDb;
@@ -129,4 +136,5 @@ export {
     updateUser,
     deleteUser,
     pathIsBiz,
+    getUserById,
 };
