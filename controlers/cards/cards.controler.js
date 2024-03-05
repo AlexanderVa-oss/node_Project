@@ -1,3 +1,4 @@
+import { log } from "debug/src/browser.js";
 import {
     getAllCards,
     getCardById,
@@ -5,7 +6,8 @@ import {
     createCard,
     updateCard,
     likeCard,
-    deleteCard
+    deleteCard,
+    getCardByBizNumber
 } from "../../model/dbAdapter.js";
 import { handleGetAllCards_err, handleError } from "../../utils/errors.js";
 
@@ -52,14 +54,12 @@ const createCardController = async (req, res) => {
     }
 }
 
-const handlePostCard = (req, res) => {
-    res.json("Post Alexander!!! " + req.params.newcard);
-    console.log("Card id:", (req.params.newcard), 'posted');
-};
-
 const handleUpdateCard = async (req, res) => {
     try {
-        const cardFromDb = await getCardById(req.params.id);
+        let cardFromDb = await getCardById(req.params.id);
+        if (!cardFromDb) {
+            throw new Error("Card not found");
+        }   
         let { user_id } = cardFromDb;
         user_id = user_id + "";
         if (!cardFromDb) {
@@ -104,7 +104,10 @@ const patchBizznumberController = async (req, res) => {
         if (!cardFromDb) {
             throw new Error("Card not found");
         }
-        // Needs add: check bizNumber, and Unique
+        const cardByBizNumber = await getCardByBizNumber(req.body.bizNumber);
+        if (cardByBizNumber) {
+            throw new Error("This number is already taken");
+        }
         cardFromDb.bizNumber = req.body.bizNumber;
         let updateCardFromDB = await updateCard(req.params.id, cardFromDb);
         return res.json(updateCardFromDB);
@@ -131,7 +134,6 @@ export {
     handleGetAllCards,
     handleDeleteCard,
     handleUpdateCard,
-    handlePostCard,
     getCardByIdController,
     getMyCardsController,
     createCardController,

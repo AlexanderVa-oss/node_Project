@@ -5,6 +5,11 @@
 * The project was made according to the requirements of the educational institution HackerU.
   [Project Module](./public/pdf/ProjectModule.pdf)
 
+#### Bonuses
+
+* bizNumber Update for admin only
+
+
 ## Project Description
 
 This project serves as a robust backend solution engineered to manage and control user profiles and card details within a database framework. It's designed with a focus on security, data integrity, and seamless interaction between the server and client-side applications.
@@ -30,8 +35,6 @@ In addition to its backend capabilities, this project is designed to work seamle
 
 By leveraging a carefully selected stack of technologies and libraries, this project stands as a testament to modern backend development practices. It not only addresses the fundamental requirements of user and data management but also emphasizes security, performance, and cross-platform compatibility. The symbiotic relationship with its React frontend counterpart underscores a commitment to delivering a cohesive and intuitive full-stack application.
 
-
-
 ## Instructions for addresses
 
 ### Url
@@ -39,6 +42,7 @@ By leveraging a carefully selected stack of technologies and libraries, this pro
 > `http://localhost:3030/api`
 
 ### Users end points
+
 
 |     URl     | Method |         Authorization         |            Action            | Notice       | Return         |
 | :----------: | ------ | :---------------------------: | :---------------------------: | ------------ | -------------- |
@@ -52,16 +56,17 @@ By leveraging a carefully selected stack of technologies and libraries, this pro
 
 ### Cards end points
 
-| URL            | Method |     Authorization     | Action          | return         |
-| -------------- | :----: | :-------------------: | --------------- | -------------- |
-| /cards         |  get  |          all          | Get all cards   |                |
-| /cards/myCards |  get  |    Registered user    | Get user cards  | Array of cards |
-| /cards/:id     |  get  |          all          | Get card        | Card           |
-| /cards         |  post  |     Bussines user     | Create new card | card           |
-| /cards/:id     |  put  |     Created user     | Edit Card       | card           |
-| /cards/:id     | patch |    Registered user    | Like card       | card           |
-| /cards/:id     | delete | Created user or admin | Delete card     | Delete card    |
 
+| URL             | Method |     Authorization     | Action            | return         |
+| --------------- | :----: | :-------------------: | ----------------- | -------------- |
+| /cards          |  get  |          all          | Get all cards     |                |
+| /cards/myCards  |  get  |    Registered user    | Get user cards    | Array of cards |
+| /cards/:id      |  get  |          all          | Get card          | Card           |
+| /cards          |  post  |     Bussines user     | Create new card   | card           |
+| /cards/:id      |  put  |     Created user     | Edit Card         | card           |
+| /cards/:id      | patch |    Registered user    | Like card         | card           |
+| `/bisuness/:id` | patch |         Admin         | Change BizzNumber | card           |
+| /cards/:id      | delete | Created user or admin | Delete card       | Delete card    |
 
 ## For correct work
 

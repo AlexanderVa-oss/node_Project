@@ -12,8 +12,8 @@ const generateUniqNumber = async () => {
         let randomNumber;
         let card = {}
         let i = 0;
-        const stomNumber = 700;
-        while (card && i < stomNumber) {
+        const stopNumber = 700;
+        while (card && i < stopNumber) {
             randomNumber = getRandomInclusive(1000000, 9999999);
             card = await getCardByBizNumber(randomNumber);
             i++;

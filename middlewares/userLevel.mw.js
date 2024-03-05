@@ -37,7 +37,7 @@ const adminOnly = (req, res, next) => {
     if (!req.user) {
         throw new Error("you must be logged in");
     }
-    if (req.user.isAdmin) {
+    if (!req.user.isAdmin) {
         next();
     } else {
         handleError(res, 401, "you not allowed to do this action");

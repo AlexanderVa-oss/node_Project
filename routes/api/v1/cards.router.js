@@ -3,7 +3,6 @@ import {
     handleGetAllCards,
     handleDeleteCard,
     handleUpdateCard,
-    handlePostCard,
     getCardByIdController,
     getMyCardsController,
     createCardController,
@@ -23,11 +22,12 @@ import createCardValidation from "../../../validation/joi/cards/cardValidation.j
 
 const router = express.Router();
 
-// http://localhost:3030/api/cards
+// http://localhost:3030/api/cards V get all cards
 router.get("/",
     handleGetAllCards
 );
 
+// http://localhost:3030/api/cards V Create new card
 router.post("/",
     authMidelleware,
     IsBizz,
@@ -35,20 +35,19 @@ router.post("/",
     createCardController
 );
 
+// http://localhost:3030/api/cards/mycards V get all my cards
 router.get("/mycards",
     authMidelleware,
     getMyCardsController
 )
 
+// http://localhost:3030/api/cards/:id V get card by id
 router.get("/:id",
     objectIdParamsValidationMiddleware,
     getCardByIdController
 );
 
-router.post("/:newcard",
-    handlePostCard
-);
-
+// http://localhost:3030/api/cards/:id V update card by id
 router.put("/:id",
     authMidelleware,
     objectIdParamsValidationMiddleware,
@@ -57,16 +56,18 @@ router.put("/:id",
     handleUpdateCard,
 );
 
+// http://localhost:3030/api/cards/:id V like card by id
 router.patch("/:id",
     authMidelleware,
     objectIdParamsValidationMiddleware,
     patchLikeController,
 );
 
-router.patch("/bizNumber/:id",
+// http://localhost:3030/api/cards/:id V update bizz number
+router.patch("/bisuness/:id",
     authMidelleware,
-    objectIdParamsValidationMiddleware,
     adminOnly,
+    objectIdParamsValidationMiddleware,
     patchBizznumberController
 );
 

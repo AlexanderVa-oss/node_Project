@@ -75,8 +75,8 @@ if (DB === "mongo") {
         return getAllMyCardsService(user_id);
     }
 
-    updateCard = (user_id, card,) => {
-        return updateCardService(user_id, card);
+    updateCard = (card_id, card) => {
+        return updateCardService(card_id, card);
     }
 
     likeCard = (user_id, likes) => {
