@@ -1,6 +1,6 @@
 # My First NodeJs project.
 
-> [Link to Documentatiuon](https://www.linkedin.com/mynetwork/)
+> [Link to Documentatiuon](https://go.postman.co/workspace/fb8ec676-b0d1-4c06-8af9-65d7cfa79fda/collection/32178826-e1a972e3-8f09-4f10-ac91-46a5792e3aa3)
 
 * The project was made according to the requirements of the educational institution HackerU.
   [Project Module](./public/pdf/ProjectModule.pdf)
@@ -8,7 +8,6 @@
 #### Bonuses
 
 * bizNumber Update for admin only
-
 
 ## Project Description
 
