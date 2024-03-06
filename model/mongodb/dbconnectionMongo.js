@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { conectedToMongo, NotConnectToMongo } from "../../utils/errors.js";
+import { conectedToMongo, NotConnectToMongo, conectedToMongoLocal } from "../../utils/errors.js";
 
 const connectToMongo = () => {
     if (process.env.ENVIRONMENT === "production") {
@@ -7,13 +7,11 @@ const connectToMongo = () => {
             mongoose
                 .connect(process.env.MONGODB_CONNECTION_STR + "bizdb")
                 .then(() => {
-                    console.log(chalk.magentaBright.bold("Connected to MongoDB"));
+                    conectedToMongo()
                     resolve();
                 })
                 .catch((err) => {
-                    console.log(
-                        chalk.redBright.bold("Error connecting to MongoDB: ", err)
-                    );
+                    NotConnectToMongo(err);
                     reject(err);
                     process.exit(1);
                 });
@@ -23,19 +21,12 @@ const connectToMongo = () => {
         return new Promise((resolve, reject) => {
             mongoose
                 .connect(process.env.REMOTE_URL + "bizdb")
-
                 .then(() => {
-                    console.log(
-                        chalk.magentaBright.bold(
-                            "Connected to MongoDB-LOCAL" + process.env.REMOTE_URL
-                        )
-                    );
+                    conectedToMongoLocal()
                     resolve();
                 })
                 .catch((err) => {
-                    console.log(
-                        chalk.redBright.bold("Error connecting to MongoDB: ", err)
-                    );
+                    NotConnectToMongo(err);
                     reject(err);
                     process.exit(1);
                 });

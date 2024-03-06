@@ -1,4 +1,3 @@
-import { log } from "debug/src/browser.js";
 import {
     getAllCards,
     getCardById,
@@ -9,7 +8,17 @@ import {
     deleteCard,
     getCardByBizNumber
 } from "../../model/dbAdapter.js";
-import { handleGetAllCards_err, handleError } from "../../utils/errors.js";
+import {
+    handleGetAllCards_err,
+    handleError,
+    getCardByIdController_err,
+    getMyCardsController_err,
+    createCardController_err,
+    handleUpdateCard_err,
+    patchLikeController_err,
+    patchBizznumberController_err,
+    handleDeleteCard_err,
+} from "../../utils/errors.js";
 
 const handleGetAllCards = async (req, res) => {
     try {
@@ -26,7 +35,7 @@ const getCardByIdController = async (req, res) => {
         let card = await getCardById(req.params.id);
         res.json(card);
     } catch (err) {
-        console.log(err);
+        getCardByIdController_err(err);
         handleError(res, 400, err.message);
     }
 };
@@ -37,7 +46,7 @@ const getMyCardsController = async (req, res) => {
         let myCards = await getAllMyCards(userId);
         return res.json(myCards);
     } catch (err) {
-        console.log(err);
+        getMyCardsController_err(err);
         handleError(res, 400, err.message);
     }
 };
@@ -49,7 +58,7 @@ const createCardController = async (req, res) => {
         let newCard = await createCard(req.body);
         return res.json(newCard);
     } catch (err) {
-        console.log(err);
+        createCardController_err(err);
         handleError(res, 400, err.message);
     }
 }
@@ -59,7 +68,7 @@ const handleUpdateCard = async (req, res) => {
         let cardFromDb = await getCardById(req.params.id);
         if (!cardFromDb) {
             throw new Error("Card not found");
-        }   
+        }
         let { user_id } = cardFromDb;
         user_id = user_id + "";
         if (!cardFromDb) {
@@ -73,7 +82,7 @@ const handleUpdateCard = async (req, res) => {
         const updatedCard = await updateCard(req.params.id, req.body);
         return res.json(updatedCard);
     } catch (err) {
-        console.log(err);
+        handleUpdateCard_err(err);
         handleError(res, 400, err.message);
     }
 };
@@ -93,7 +102,7 @@ const patchLikeController = async (req, res) => {
         const updatedCardFromDb = await likeCard(req.params.id, likes);
         return res.json(updatedCardFromDb);
     } catch (err) {
-        console.log(err);
+        patchLikeController_err(err);
         handleError(res, 400, err.message);
     }
 };
@@ -112,7 +121,7 @@ const patchBizznumberController = async (req, res) => {
         let updateCardFromDB = await updateCard(req.params.id, cardFromDb);
         return res.json(updateCardFromDB);
     } catch (err) {
-        console.log(err);
+        patchBizznumberController_err(err);
         handleError(res, 400, err.message);
     }
 };
@@ -125,7 +134,7 @@ const handleDeleteCard = async (req, res) => {
         }
         return res.json(await deleteCard(req.params.id));
     } catch (err) {
-        console.log(err);
+        handleDeleteCard_err(err);
         handleError(res, 400, err.message);
     }
 };
