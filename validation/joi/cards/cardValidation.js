@@ -19,7 +19,6 @@ const createCardSchema = Joi.object({
         .pattern(emailRegExp)
         .min(6)
         .max(255)
-        .required()
         .messages({
             "string.email": "Invalid email",
         }).required(),

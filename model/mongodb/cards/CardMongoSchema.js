@@ -33,6 +33,7 @@ const CardSchema = new mongoose.Schema({
         required: true,
         trim: true,
         match: RegExp(emailRegExp),
+        unique: true,
     },
     web: {
         type: String,
