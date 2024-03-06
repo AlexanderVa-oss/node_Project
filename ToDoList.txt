@@ -1,18 +1,2 @@
 <!-- add logic thats add initial users only if  database is empty or lower then 3 users.  -->
-<!-- needs make token adapter -->
-<!-- remove consoleLogs -->
 <!-- needs Check conection to my project 13/02/2024 02:20:00 -->
-
-
-<!-- needs add field to send in user.controler -->
- <!-- // Возможно, нужно отправить только email и другие поля, которые безопасно отправлять
-         res.json({
-            email: newUser.email,
-            другие поля, которые безопасно отправлять
-        }); -->
-
-[3:46 PM]Oran: PORT="3030"
-TOKEN_PRIVATE_KEY="......"
-MONGODB_CON_STR="....../"
-REMOTE_URL="......"
-ENVIRONMENT= "development"
