@@ -10,7 +10,7 @@ const Address = new mongoose.Schema({
     country: default_REQUIRED_StringValidation,
     city: default_REQUIRED_StringValidation,
     street: default_REQUIRED_StringValidation,
-    housenumber: defaultHouseNumberValidation,
+    houseNumber: defaultHouseNumberValidation,
     zipcode: defaultZipCodeNumberValidation,
 });
 

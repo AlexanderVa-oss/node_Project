@@ -6,7 +6,7 @@ import generateUniqNumber from "../utils/generateUniqNumber.js";
 const initialCards = async (bizId) => {
     let cards = [
         {
-            title: "Card 1",
+            title: "Initial Card 1",
             subtitle: "Card 1 subtitle",
             description: "Card 1 description",
             phone: "0500000000",
@@ -28,7 +28,7 @@ const initialCards = async (bizId) => {
             user_id: bizId,
         },
         {
-            title: "Card 2",
+            title: "Initial Card 2",
             subtitle: "Card 2 subtitle",
             description: "Card 2 description",
             phone: "0500000000",
@@ -50,7 +50,7 @@ const initialCards = async (bizId) => {
             user_id: bizId,
         },
         {
-            title: "Card 3",
+            title: "Initial Card 3",
             subtitle: "Card 3 subtitle",
             description: "Card 3 description",
             phone: "0500000000",

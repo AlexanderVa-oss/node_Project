@@ -3,6 +3,7 @@ const defaultHouseNumberValidation = {
     minLength: 1,
     maxLength: 9999,
     trim: true,
+    default: 2,
 }
 
 const defaultZipCodeNumberValidation = {

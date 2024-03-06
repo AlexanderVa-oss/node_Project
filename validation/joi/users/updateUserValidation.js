@@ -27,7 +27,7 @@ const updateUserSchema = Joi.object({
         country: Joi.string().required().allow(""),
         city: Joi.string().min(3).max(20).required(),
         street: Joi.string().min(3).max(20).required(),
-        housenumber: Joi.number().min(1).max(9999).allow(""),
+        houseNumber: Joi.number().min(1).max(9999).allow(""),
         zipcode: Joi.number().min(10000).max(9999999).allow(""),
     }).required(),
 });
