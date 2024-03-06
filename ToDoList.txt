@@ -11,3 +11,8 @@
             другие поля, которые безопасно отправлять
         }); -->
 
+[3:46 PM]Oran: PORT="3030"
+TOKEN_PRIVATE_KEY="......"
+MONGODB_CON_STR="....../"
+REMOTE_URL="......"
+ENVIRONMENT= "development"
