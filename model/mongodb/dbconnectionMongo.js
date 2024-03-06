@@ -5,7 +5,7 @@ const connectToMongo = () => {
     if (process.env.ENVIRONMENT === "production") {
         return new Promise((resolve, reject) => {
             mongoose
-                .connect(process.env.MONGODB_CONNECTION_STR + "bizdb")
+                .connect(process.env.MONGODB_CONNECTION_STR + "ProjectName")
                 .then(() => {
                     conectedToMongo()
                     resolve();
@@ -20,7 +20,7 @@ const connectToMongo = () => {
     if (process.env.ENVIRONMENT === "development") {
         return new Promise((resolve, reject) => {
             mongoose
-                .connect(process.env.REMOTE_URL + "bizdb")
+                .connect(process.env.REMOTE_URL + "ProjectName")
                 .then(() => {
                     conectedToMongoLocal()
                     resolve();
