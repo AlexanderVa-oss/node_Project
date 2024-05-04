@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import Name from "./userHelper/Name.js";
-import Image from "./userHelper/Image.js";
-import Address from "./userHelper/Adress.js";
 import phoneRegex from "../../../utils/phoneRegExp.js";
 import emailRegExp from "../../../utils/emailRegExp.js"
 
