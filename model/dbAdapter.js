@@ -19,7 +19,7 @@ import {
     likeCardService,
     deleteCardService,
 } from "./mongodb/cards/cardService.js";
-import normalizeUser from "../normalize/user.normalize.js";
+// import normalizeUser from "../normalize/user.normalize.js";
 import normalizeCards from "../normalize/card.normalize.js";
 
 const DB = "mongo";
@@ -89,7 +89,7 @@ if (DB === "mongo") {
 
     // Users
     createUser = (user) => {
-        user = normalizeUser(user);
+        // user = normalizeUser(user);
         return createUserService(user);
     };
 
@@ -102,7 +102,7 @@ if (DB === "mongo") {
     }
 
     updateUser = (id, user) => {
-        user = normalizeUser(user);
+        // user = normalizeUser(user);
         return updateUserService(id, user);
     }
 

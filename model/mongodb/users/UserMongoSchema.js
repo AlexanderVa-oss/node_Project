@@ -23,8 +23,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: Image,
-    address: Address,
     isBusiness: {
         type: Boolean,
         required: true,

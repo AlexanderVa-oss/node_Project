@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 import { conectedToMongo, NotConnectToMongo, conectedToMongoLocal } from "../../utils/errors.js";
 
 const connectToMongo = () => {
-    if (process.env.ENVIRONMENT === "production") {
+    if (process.env.NODE_ENV === "production") {
+        console.log("prod Mode");
         return new Promise((resolve, reject) => {
             mongoose
-                .connect(process.env.MONGODB_CONNECTION_STR + "ProjectName")
+                .connect(process.env.MONGODB_CONNECTION_STR + "/tavern")
                 .then(() => {
                     conectedToMongo()
                     resolve();
@@ -17,10 +18,11 @@ const connectToMongo = () => {
                 });
         });
     }
-    if (process.env.ENVIRONMENT === "development") {
+    if (process.env.NODE_ENV === "development") {
+        console.log("dev Mode");
         return new Promise((resolve, reject) => {
             mongoose
-                .connect(process.env.REMOTE_URL + "ProjectName")
+                .connect(process.env.REMOTE_URL + "/tavern")
                 .then(() => {
                     conectedToMongoLocal()
                     resolve();

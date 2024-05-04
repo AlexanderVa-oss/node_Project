@@ -10,19 +10,8 @@ const initialUsers = async () => {
             phone: "0500000000",
             email: "kenny2@gmail.com",
             password: "Aa123456!!",
-            image: {
-                alt: "http://www.google.com",
-            },
-            address: {
-                state: "asd",
-                country: "asd",
-                city: "asd",
-                street: "asd",
-                houseNumber: 10,
-                zipcode: 12345,
-            },
-            isBusiness: false,
-            isAdmin: false,
+            isBusiness: true,
+            isAdmin: true,
         },
         {
             name: {
@@ -32,19 +21,8 @@ const initialUsers = async () => {
             phone: "0500000000",
             email: "john@gmail.com",
             password: "Aa123456!!",
-            image: {
-                alt: "http://www.google.com",
-            },
-            address: {
-                state: "asd",
-                country: "asd",
-                city: "asd",
-                street: "asd",
-                houseNumber: 10,
-                zipcode: 12345,
-            },
-            isBusiness: true,
-            isAdmin: true,
+            isBusiness: false,
+            isAdmin: false,
         },
         {
             name: {
@@ -54,17 +32,6 @@ const initialUsers = async () => {
             phone: "0500000000",
             email: "james@gmail.com",
             password: "Aa123456!!",
-            image: {
-                alt: "http://www.google.com",
-            },
-            address: {
-                state: "asd",
-                country: "asd",
-                city: "asd",
-                street: "asd",
-                houseNumber: 10,
-                zipcode: 12345,
-            },
             isBusiness: true,
             isAdmin: false,
         },
